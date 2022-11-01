@@ -10,6 +10,10 @@ import java.util.Map;
 public class MyInjector {
     private Map<Class, Object> beans = new HashMap<>();
 
+    public MyInjector() {
+        scanAnnotations();
+    }
+
     private void scanAnnotations() {
         List<Class<?>> classes = ClassFinder.find("IoC");
 
