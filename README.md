@@ -1,5 +1,3 @@
-
-
 # Lab 1 - Inversion of Control
 
 In this lab you will develop an IoC framework. Your framework cannot have Spring libraries.
