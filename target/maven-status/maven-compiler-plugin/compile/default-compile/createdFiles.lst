@@ -1,0 +1,12 @@
+com/example/demo/ComponentScans.class
+com/example/demo/Employee/Employee.class
+com/example/demo/Employee/EmployeeRepository.class
+com/example/demo/BeanNotFoundException.class
+com/example/demo/MyInjector.class
+com/example/demo/BattaConfig.class
+com/example/demo/MyBean.class
+com/example/demo/DemoApplication.class
+com/example/demo/Config.class
+com/example/demo/MyAutowired.class
+com/example/demo/ComponentScan.class
+com/example/demo/Employee/EmployeeService.class
