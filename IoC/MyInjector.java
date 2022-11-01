@@ -9,13 +9,15 @@ import java.util.Map;
 
 public class MyInjector {
     private Map<Class, Object> beans = new HashMap<>();
+    private String pack;
 
-    public MyInjector() {
+    public MyInjector(String pack) {
+        this.pack = pack;
         scanAnnotations();
     }
 
     private void scanAnnotations() {
-        List<Class<?>> classes = ClassFinder.find("IoC");
+        List<Class<?>> classes = ClassFinder.find(pack);
 
         for (Class<?> cl : classes) {
             if (cl.isAnnotationPresent(MyBean.class)
