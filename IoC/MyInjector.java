@@ -16,7 +16,6 @@ public class MyInjector {
         for (Class<?> cl : classes) {
             if (cl.isAnnotationPresent(MyBean.class)
                     || cl.isAnnotationPresent(MyAutowired.class)) {
-                System.out.println(cl.getSimpleName());
                 try {
                     beans.put(cl, cl.getConstructor().newInstance());
                 } catch (NoSuchMethodException ignore) {
