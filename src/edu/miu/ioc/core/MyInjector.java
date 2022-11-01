@@ -13,11 +13,11 @@ import java.util.logging.Logger;
  * Author: Kuylim TITH
  * Date: 10/31/2022
  */
-public class BeanConfiguration {
+public class MyInjector {
 
-    private static final Logger LOG = Logger.getLogger(BeanConfiguration.class.getName());
+    private static final Logger LOG = Logger.getLogger(MyInjector.class.getName());
 
-    private BeanConfiguration() {
+    private MyInjector() {
     }
 
     public static void registerBeans(String packageName) {
@@ -26,7 +26,7 @@ public class BeanConfiguration {
             for (Class<?> cl : classes) {
                 MyBean myBean = cl.getAnnotation(MyBean.class);
                 if (!Objects.isNull(myBean)) {
-                    InversionContainer.BEANS.put(cl.getName(), Class.forName(cl.getName())
+                    InversionMap.BEANS.put(cl.getName(), Class.forName(cl.getName())
                             .getDeclaredConstructor().newInstance());
                 }
             }
@@ -43,13 +43,13 @@ public class BeanConfiguration {
                 Field[] fields = cl.getDeclaredFields();
                 for (Field field : fields) {
                     if (field.isAnnotationPresent(MyAutowired.class)) {
-                        if (!InversionContainer.BEANS.containsKey(field.getType().getName())) {
+                        if (!InversionMap.BEANS.containsKey(field.getType().getName())) {
                             throw new BeanNotFoundException(String.format("No such bean: %s", field.getDeclaringClass().getName()));
                         } else {
                             field.trySetAccessible();
                             try {
-                                Object injectObject = InversionContainer.BEANS.get(field.getType().getName());
-                                Object instanceObject = InversionContainer.BEANS.get(cl.getName());
+                                Object injectObject = InversionMap.BEANS.get(field.getType().getName());
+                                Object instanceObject = InversionMap.BEANS.get(cl.getName());
                                 field.set(instanceObject, injectObject);
                             } catch (IllegalAccessException e) {
                                 LOG.info("Failed to inject beans: " + e.getMessage());
@@ -60,4 +60,6 @@ public class BeanConfiguration {
             }
         }
     }
+
+
 }

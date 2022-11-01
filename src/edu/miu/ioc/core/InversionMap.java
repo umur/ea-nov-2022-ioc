@@ -7,9 +7,9 @@ import java.util.Map;
  * Author: Kuylim TITH
  * Date: 10/31/2022
  */
-public class InversionContainer {
+public class InversionMap {
 
-    private InversionContainer() {
+    private InversionMap() {
     }
 
     public static final Map<String, Object> BEANS = new HashMap<>();
