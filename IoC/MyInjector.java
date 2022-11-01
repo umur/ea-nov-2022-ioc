@@ -26,7 +26,7 @@ public class MyInjector {
         }
     }
 
-    public Object getBean(Class clazz) {
-        return null;
+    public <T> T getBean(Class<T> clazz) {
+        return clazz.cast(beans.get(clazz));
     }
 }
