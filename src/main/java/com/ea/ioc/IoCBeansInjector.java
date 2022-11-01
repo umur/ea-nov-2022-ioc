@@ -1,4 +1,4 @@
-package com.waa.ioc;
+package com.ea.ioc;
 
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
@@ -6,8 +6,6 @@ import org.reflections.scanners.SubTypesScanner;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Parameter;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -24,7 +22,7 @@ public class IoCBeansInjector {
         classes.forEach(cls -> {
             if (cls.getAnnotation(IoCBean.class) != null) {
                 try {
-                    beans.put(cls.getName(),
+                    beans.putIfAbsent(cls.getName(),
                             cls.getDeclaredConstructor().newInstance());
                 } catch (Exception e) {
                     throw new RuntimeException(e);
@@ -35,8 +33,8 @@ public class IoCBeansInjector {
     }
 
     public Object getClass(Class cls) throws IoCBeanNotFoundException {
-        if (beans.containsKey(cls)) {
-            return beans.get(cls);
+        if (beans.containsKey(cls.getName())) {
+            return beans.get(cls.getName());
         } else throw new IoCBeanNotFoundException(cls);
     }
 

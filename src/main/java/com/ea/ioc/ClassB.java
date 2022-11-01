@@ -1,4 +1,4 @@
-package com.waa.ioc;
+package com.ea.ioc;
 
 @IoCBean // IoC Component marker
 public class ClassB {

@@ -1,4 +1,4 @@
-package com.waa.ioc;
+package com.ea.ioc;
 
 public class IoCBeanNotFoundException extends Exception {
     public IoCBeanNotFoundException(Class cls ) {
