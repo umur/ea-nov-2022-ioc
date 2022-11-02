@@ -9,7 +9,11 @@ public class Main {
     private String n;
     public static void main(String[] args) {
         MyInjector inj = new MyInjector("classes");
-        C a = inj.getBean(C.class);
-        System.out.println(a);
+        try {
+            C a = inj.getBean(C.class);
+            System.out.println(a);
+        } catch (BeanNotFoundException ignore) {
+
+        }
     }
 }

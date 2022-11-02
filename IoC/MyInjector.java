@@ -31,7 +31,10 @@ public class MyInjector {
         }
     }
 
-    public <T> T getBean(Class<T> clazz) {
-        return clazz.cast(beans.get(clazz));
+    public <T> T getBean(Class<T> clazz) throws BeanNotFoundException {
+        T bean = (T) beans.get(clazz);
+        if (bean == null)
+            throw new BeanNotFoundException();
+        return bean;
     }
 }
