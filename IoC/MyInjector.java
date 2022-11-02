@@ -20,8 +20,7 @@ public class MyInjector {
         List<Class<?>> classes = ClassFinder.find(pack);
 
         for (Class<?> cl : classes) {
-            if (cl.isAnnotationPresent(MyBean.class)
-                    || cl.isAnnotationPresent(MyAutowired.class)) {
+            if (cl.isAnnotationPresent(MyBean.class)) {
                 try {
                     beans.put(cl, cl.getConstructor().newInstance());
                 } catch (NoSuchMethodException ignore) {
