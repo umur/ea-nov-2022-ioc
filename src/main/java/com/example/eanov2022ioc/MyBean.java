@@ -1,4 +1,4 @@
-package com.example.eanov2022ioc.annotation;
+package com.example.eanov2022ioc;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,6 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
+@Target({ElementType.TYPE, ElementType.CONSTRUCTOR})
 public @interface MyBean {
 }
