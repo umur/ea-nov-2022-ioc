@@ -1,9 +1,15 @@
 package IoC;
 
+import classes.A;
+import classes.B;
+import classes.C;
+
 public class Main {
     @MyAutowired
     private String n;
     public static void main(String[] args) {
-        System.out.println("nehi");
+        MyInjector inj = new MyInjector("classes");
+        C a = inj.getBean(C.class);
+        System.out.println(a);
     }
 }
