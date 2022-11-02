@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "edu.miu.eaplayground")
 public class EaPlaygroundApplication {
 
     public static void main(String[] args) throws NotFoundBeanException, ClassNotFoundException, NotFoundException {
@@ -17,7 +17,7 @@ public class EaPlaygroundApplication {
         MyInjector myInjector = new MyInjector();
         Test test = (Test) myInjector.getBean(Test.class);
         test.print();
-        test.display();
+        //test.display();
     }
 
 }
